@@ -1,7 +1,10 @@
-.display{
-    display: flex;
-    justify-content: space-evenly;
+.display {
+  display: flex;
+  justify-content: space-evenly;
 }
 .display a {
-    margin-left: 10px;
+  margin-left: 10px;
+}
+.nav {
+  margin-top: 10px;
 }

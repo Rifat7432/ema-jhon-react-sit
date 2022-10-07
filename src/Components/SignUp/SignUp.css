@@ -1,0 +1,13 @@
+.error {
+  outline: 2px solid red;
+}
+.password{
+  position: relative;
+}
+.eye-button{
+  position: absolute;
+  padding-right: 10px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
