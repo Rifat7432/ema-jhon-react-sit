@@ -22,7 +22,7 @@ const Cart = ({ carts, setReloader }) => {
   let grandTotal = price + shipping + parseFloat(tax);
   return (
     <div className="reletive">
-      <div className="bg-red-50 h-96 text-slate-900 cart">
+      <div className="bg-red-50 h-5/6 text-slate-900 cart">
         <h1 className="text-3xl">Order Summary</h1>
         <p className="text-xl">selected items : {quantity}</p>
         <p className="text-xl">Total Price : ${price}</p>

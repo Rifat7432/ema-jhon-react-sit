@@ -45,7 +45,8 @@ const Section = () => {
           <Card product={product} addToCart={addToCart} key={product.id}></Card>
         ))}
       </div>
-      <Cart carts={carts} setReloader={setReloader}></Cart>
+      <div className="all-carts"><Cart carts={carts} setReloader={setReloader}></Cart></div>
+      
     </div>
   );
 };

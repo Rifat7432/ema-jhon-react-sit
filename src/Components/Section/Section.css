@@ -2,3 +2,21 @@
   display: grid;
   grid-template-columns: 80% 20%;
 }
+@media screen and (max-width: 484px) {
+  .section{
+    display: block;
+  }
+  .all-carts {
+  display: none;
+  }
+}
+@media screen and (min-width: 485px) and (max-width: 768px) {
+  .section {
+  grid-template-columns: 50% 50%;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .section {
+  grid-template-columns: 70% 30%;
+  }
+}
