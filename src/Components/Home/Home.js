@@ -4,8 +4,8 @@ import img from "../../images/giphy.gif";
 
 const Home = () => {
   return (
-    <div className="flex flex-col-reverse md:grid md:grid-cols-2 md:gap-4 my-12">
-      <div className="my-auto relative">
+    <div className="flex flex-col-reverse md:grid md:grid-cols-2 md:gap-4 my-12 mx-auto">
+      <div className="my-auto relative mt-8 md:mt-0">
         <h1 className="text-5xl mt-20">New Collection For Fall</h1>
         <h4 className="text-xl">
           Discover all the new arrivals of ready-to-wear Collection
@@ -19,7 +19,7 @@ const Home = () => {
           </button>
         </Link>
       </div>
-      <div>
+      <div className="mx-auto">
         <img className="h-5/6 mt-2" src={img} alt="img" />
       </div>
     </div>

@@ -40,7 +40,7 @@ const Section = () => {
   };
   return (
     <div className="section">
-      <div className="grid grid-cols-3 gap-4 mt-10 w-10/12 mx-auto ">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mt-10 w-10/12 mx-auto ">
         {products.map((product) => (
           <Card product={product} addToCart={addToCart} key={product.id}></Card>
         ))}

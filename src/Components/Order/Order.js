@@ -6,9 +6,9 @@ const Order = ({ order, removeOrder }) => {
   const { img, name, price, shipping, quantity, id } = order;
 
   return (
-    <div className="grid grid-cols-3 h-48  rounded-lg bg-zinc-400 relative">
-      <div className="mx-3 my-auto">
-        <img className="w-24 h-24 rounded-lg" src={img} alt="" />
+    <div className="grid sm:grid-cols-3 grid-rows-3 md:h-56 sm:p-10 py-10 rounded-lg bg-zinc-400 relative">
+      <div className="md:mx-3 md:my-auto mx-auto">
+        <img className="md:w-24 w-full h-24 rounded-lg" src={img} alt="" />
       </div>
       <div className="mx-3 my-auto">
         <h3 className="text-xl">{name}</h3>

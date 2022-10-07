@@ -59,14 +59,14 @@ const SignUp = () => {
     setIsConfirmPassword(!isConfirmPassword);
   };
   return (
-    <div className="w-1/2 mx-auto my-28 bg-red-100 text-slate-800 font-bold px-36 py-20">
+    <div className=" w-full sm:w-11/12 md:w-4/5 lg:w-3/4 xl:w-1/2 mx-auto my-28 bg-red-100 text-slate-800 font-bold sm:px-36 sm:py-20 p-3">
       <h2 className="text-4xl">Sign Up</h2>
-      <div className="myy-5">
+      <div className="my-5">
         <div className="my-5">
           <p className="text-start">Email</p>
           <input
             onChange={(e) => inputEmail(e.target.value)}
-            className={`w-96 h-10 border-none  text-black text-center rounded-md ${
+            className={`w-11/12 h-10 border-none  text-black text-center rounded-md ${
               error ? "outline-none" : "error"
             }`}
             placeholder={error ? "Enter email" : "This account already exited"}
@@ -79,21 +79,20 @@ const SignUp = () => {
           <div className="password">
             <input
               onChange={(e) => inputPassword(e.target.value)}
-              className={`w-96 h-10 border-none  text-black text-center rounded-md ${
+              className={`w-11/12 h-10 border-none  text-black text-center rounded-md ${
                 errorPassword ? "outline-none" : "error"
               }`}
-              type={isPassword ? 'password' : 'text'}
-
+              type={isPassword ? "password" : "text"}
               placeholder={
                 errorPassword ? "enter password" : `Password doesn't match`
               }
               value={password}
             />
             <button
-              className="eye-button transition duration-200 ease-in"
+              className="eye-button xl:pr-5 pr-9 transition duration-200 ease-in"
               onClick={showPassword}
             >
-              <FontAwesomeIcon icon={isPassword ?  faEyeSlash : faEye } />
+              <FontAwesomeIcon icon={isPassword ? faEyeSlash : faEye} />
             </button>
           </div>
         </div>
@@ -102,7 +101,7 @@ const SignUp = () => {
           <div className="password">
             <input
               onChange={(e) => inputConfirmPassword(e.target.value)}
-              className={`w-96 h-10 border-none  text-black text-center rounded-md ${
+              className={`w-11/12 h-10 border-none  text-black text-center rounded-md ${
                 errorPassword ? "outline-none" : "error"
               }`}
               type={isConfirmPassword ? "password" : "text"}
@@ -112,10 +111,10 @@ const SignUp = () => {
               value={confirmPassword}
             />
             <button
-              className="eye-button transition duration-200 ease-in"
+              className="eye-button xl:pr-5 pr-9 transition duration-200 ease-in"
               onClick={show}
             >
-              <FontAwesomeIcon icon={isConfirmPassword ?  faEyeSlash : faEye } />
+              <FontAwesomeIcon icon={isConfirmPassword ? faEyeSlash : faEye} />
             </button>
           </div>
         </div>

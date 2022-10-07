@@ -11,9 +11,9 @@ const Food = () => {
   const foods = useLoaderData();
   return (
     <div>
-      <div className="form-control w-full max-w-xs">
+      <div className="form-control w-full max-w-xs mx-auto">
         <label className="label">
-          <span className="label-text">Enter food name?</span>
+          <span className="label-text text-2xl">Enter food name?</span>
         </label>
         <input
           onChange={(e) => input(e.target.value)}
@@ -23,10 +23,12 @@ const Food = () => {
         />
         <label className="label"></label>
       </div>
-      <div className="grid grid-cols-3 gap-4">
-        {foods ? foods.meals.map((food) => (
-          <Foods food={food}></Foods>
-        )) : <h1>nothing found</h1>}
+      <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mx-auto">
+        {foods ? (
+          foods.meals.map((food) => <Foods food={food}></Foods>)
+        ) : (
+          <h1>nothing found</h1>
+        )}
       </div>
     </div>
   );

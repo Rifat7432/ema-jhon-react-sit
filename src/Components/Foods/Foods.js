@@ -3,8 +3,8 @@ import React from "react";
 const Foods = ({ food }) => {
   const { strMealThumb, strMeal, strInstructions } = food;
   return (
-    <div>
-      <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="mx-auto">
+      <div className="card md:w-96 w-9/12 mx-auto bg-base-100 shadow-xl">
         <figure>
           <img src={strMealThumb} alt="Shoes" />
         </figure>

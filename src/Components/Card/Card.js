@@ -6,7 +6,7 @@ const Card = ({ product, addToCart }) => {
     <div>
       <div className="card glass">
         <figure>
-          <img src={img} alt="car!" className="h-80" />
+          <img src={img} alt="car!" className="h-80 w-full" />
         </figure>
         <div className="card-body h-72">
           <h4 className="card-title">{name}</h4>
