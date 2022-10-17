@@ -1,87 +1,104 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { activeUsers } from "../../utilities/users";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import "./Login.css";
+import { DataContext } from "../Context/UserContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
+  const [userEmail,setUserEmail] = useState('')
   const [isPassword, setIsPassword] = useState(true);
   const [error, setError] = useState(true);
-  const [errorPassword, setErrorPassword] = useState(true);
-  const [email, setNewEmail] = useState("");
-  const [password, setNewPassword] = useState("");
-
-  const inputEmail = (value) => {
-    setNewEmail(value);
-    setError(true);
-  };
-  const inputPassword = (value) => {
-    setNewPassword(value);
-    setErrorPassword(true);
-  };
+  const [passwordError, setPasswordError] = useState('');
+  const { login,forget} = useContext(DataContext);
+  const location = useLocation()
+  const form = location.state?.from.pathname || '/'
   const home = useNavigate();
-  const submit = () => {
-    const users = activeUsers();
-    if (email in users) {
-      const userPassword = users[email];
-      if (userPassword === password) {
-        home("/");
-      } else {
-        setErrorPassword(false);
-        setNewPassword("");
-      }
-    } else {
-      setError(false);
-      setNewEmail("");
-    }
+  const submit = (event) => {
+    event.preventDefault();
+    const from = event.target;
+    const email = from.email.value;
+    const password = from.password.value;
+    console.log(email,password)
+    login(email,password)
+    .then(result=>{
+      console.log(result.user)
+      from.reset();
+      home(form,{replace:true});
+      setError(false)
+    })
+   .catch(error=>{
+    console.log(error)
+    setPasswordError(error.message)
+   })
   };
-  const show = () => {
+  const showPassword = () => {
     setIsPassword(!isPassword);
   };
+  const getEmail = (event)=>{
+    setUserEmail(event.target.value)
+  }
+  const forgetPassword = ()=>{
+
+    forget(userEmail)
+    .then(result=>{
+      toast.info(
+        "go to your email and set a new password.If you do not get the mail in inbox then check spam.",
+        { autoClose: 3000 }
+      );
+    })
+    .catch(error=>{
+      toast.error(
+        "Enter your email to set new password !",
+        { autoClose: 3000 }
+      );
+  })
+}
   return (
     <div className="w-full sm:w-11/12 md:w-4/5 lg:w-3/4 xl:w-1/2 mx-auto my-28 bg-red-100 text-slate-800 font-bold sm:px-36 sm:py-20 p-3">
       <h2 className="text-4xl">Login</h2>
-      <div className="my-5">
+      <form onSubmit={submit} className="my-5">
         <div className="my-5">
           <p className="text-start">Email</p>
           <input
-            onChange={(e) => inputEmail(e.target.value)}
-            className={`w-11/12 h-10 border-none  text-black text-center rounded-md ${
-              error ? "outline-none" : "error"
-            }`}
-            placeholder={error ? "enter email" : "invalid email"}
+            name="email"
+            required
+            onBlur={getEmail}
+            className={`w-11/12 h-10 border-none  text-black text-center rounded-md `}
+            placeholder={ "Enter email"  }
             type="text"
-            value={email}
           />
         </div>
         <div className="my-5">
-          <p className="text-start">password</p>
+          <p className="text-start">Password</p>
           <div className="password">
             <input
-              onChange={(e) => inputPassword(e.target.value)}
-              className={`w-11/12 h-10 border-none  text-black text-center rounded-md ${
-                errorPassword ? "outline-none" : "error"
-              }`}
+              name="password"
+              required
+              className={`w-11/12 h-10 border-none  text-black text-center rounded-md `}
+              placeholder='Enter password'
               type={isPassword ? "password" : "text"}
-              placeholder={
-                errorPassword ? "enter password" : "invalid password"
-              }
-              value={password}
             />
-            <button
-              className="eye-button transition duration-200 ease-in xl:pr-5 pr-9"
-              onClick={show}
+            <span
+              className="eye-button xl:pr-5 pt-2 pr-9 transition duration-200 ease-in"
+              onClick={showPassword}
             >
-              <FontAwesomeIcon icon={isPassword ? faEye : faEyeSlash} />
-            </button>
+              <FontAwesomeIcon icon={isPassword ? faEyeSlash : faEye} />
+            </span>
           </div>
         </div>
-      </div>
-      <div className="my-5 mb-14">
-        <button onClick={submit} className="btn btn-info w-11/12 mx-auto">
+
+        <button type="submit" className="btn btn-info w-11/12 mx-auto">
           Login
         </button>
+      </form>
+      <div>
+      <button onClick={forgetPassword} className="btn btn-active btn-link">Forget Password</button>
+      </div>
+      <div className="my-5 mb-14">
+     
         <p className="mt-5">
           New to Ema-Jhon ?
           <Link to="/signup">
@@ -89,6 +106,8 @@ const Login = () => {
           </Link>
         </p>
       </div>
+      
+      {error && <p>{passwordError}</p>}
     </div>
   );
 };

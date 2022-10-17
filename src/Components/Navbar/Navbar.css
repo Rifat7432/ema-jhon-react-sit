@@ -1,9 +1,6 @@
-.display {
-  display: flex;
-  justify-content: space-evenly;
-}
+
 .display a {
-  margin-left: 10px;
+  margin-left: 20px;
 }
 .nav {
   margin-top: 10px;

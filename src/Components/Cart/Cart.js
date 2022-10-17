@@ -1,10 +1,14 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { deleteShoppingCart, storedCart } from "../../utilities/fakedb";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import "./Cart.css";
+import { CartContext } from "../Main/Main";
+
 const Cart = ({ carts, setReloader }) => {
+  const [order, setOrder] = useContext(CartContext);
   const clear = () => {
     deleteShoppingCart();
     const empty = storedCart();
@@ -18,6 +22,7 @@ const Cart = ({ carts, setReloader }) => {
     shipping += cart.shipping * cart.quantity;
     quantity += cart.quantity;
   }
+  setOrder(quantity);
   const tax = ((price + shipping) * 0.1).toFixed(2);
   let grandTotal = price + shipping + parseFloat(tax);
   return (

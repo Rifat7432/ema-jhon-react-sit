@@ -16,6 +16,7 @@ import Login from "./Components/Login/Login";
 import Navbar from "./Components/Navbar/Navbar";
 import ManageInventory from "./Components/ManageInvertory/ManageInventory";
 import Food from "./Components/Food/Food";
+import Privet from "./Components/Privet/Privet";
 
 function App() {
   const router = createBrowserRouter([
@@ -39,7 +40,7 @@ function App() {
           loader: async () => {
             return fetch("/fakeData/products.json");
           },
-          element: <Orders></Orders>,
+          element: <Privet><Orders></Orders></Privet>,
         },
         {
           path: "manageInventory",

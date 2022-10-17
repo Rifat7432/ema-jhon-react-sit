@@ -6,6 +6,7 @@ import Card from "../Card/Card";
 import Cart from "../Cart/Cart";
 import { addToDb, storedCart } from "../../utilities/fakedb";
 import { useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
 const Section = () => {
   const products = useLoaderData();
   const [carts, setCarts] = useState([]);
@@ -37,6 +38,7 @@ const Section = () => {
     }
     setCarts(newCarts);
     addToDb(selectedProduct.id);
+    toast.success('product added!',{autoClose:500})
   };
   return (
     <div className="section">

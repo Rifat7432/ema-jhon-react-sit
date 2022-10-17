@@ -27,7 +27,7 @@ const Food = () => {
         {foods ? (
           foods.meals.map((food) => <Foods food={food}></Foods>)
         ) : (
-          <h1>nothing found</h1>
+          <h1>nothing found 21</h1>
         )}
       </div>
     </div>
